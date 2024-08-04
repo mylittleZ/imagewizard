@@ -12,7 +12,10 @@
 // };
 import { authMiddleware } from "@clerk/nextjs/server";
 
-export default authMiddleware();
+export default authMiddleware({
+  // allow public access to this api endpoint
+  publicRoutes: ["/api/webhooks/clerk"],
+});
 
 export const config = {
   matcher: ["/((?!.+.[w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
